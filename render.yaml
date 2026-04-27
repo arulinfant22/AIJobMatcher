@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: aijobmatcher
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn AIJobMatcher.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: AIJobMatcher.production
+      - key: PYTHON_VERSION
+        value: 3.10.8
+    plan: free

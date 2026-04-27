@@ -63,6 +63,86 @@
             background-color: #ff4d4d;
             color: #fff;
         }
+
+        /* Footer Styles */
+        .dashboard-footer {
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+            padding: 30px 0 20px;
+            color: #ccc;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0dcaf0;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #0dcaf0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,7 +271,38 @@
   });
 </script>
 
-
+<!-- Dashboard Footer -->
+<footer class="dashboard-footer">
+    <div class="footer-content">
+        <div>
+            <div class="footer-brand">🤖 AI Job Matcher</div>
+            <div class="footer-stats">
+                <div class="footer-stat">
+                    <span>👥</span>
+                    <span>{{ total_users }} Users</span>
+                </div>
+                <div class="footer-stat">
+                    <span>📄</span>
+                    <span>{{ total_resumes }} Resumes</span>
+                </div>
+                <div class="footer-stat">
+                    <span>✉️</span>
+                    <span>{{ total_cover_letters }} Letters</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <a href="{% url 'index' %}">🏠 Home</a>
+            <a href="{% url 'dash' %}">📊 Dashboard</a>
+            <a href="{% url 'logout' %}">🚪 Logout</a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 AI Job Matcher. Built with Django ❤️ | Empowering career opportunities through AI</p>
+    </div>
+</footer>
 
 </body>
-</html>  
+</html>

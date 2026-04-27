@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4vs2z)iyx9q!wnzhevs7-w!-mxzsecfkj)_)-ic70c)wzhr@d1'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # temporary for deployment
 
 
 # Application definition
@@ -75,16 +75,13 @@ WSGI_APPLICATION = 'AIJobMatcher.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AIJob',
-        'USER':'root',
-        'PASSWORD':'12345',
-        'HOST':'LOCALHOST',
-        'PORT':'3306',
-        'OPTIONS':{'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"}
-    }
+    'default': dj_database_url.config(
+        default='mysql://root:12345@127.0.0.1:3306/AIJob'
+    )
 }
 
 
@@ -122,8 +119,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+
+import os
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

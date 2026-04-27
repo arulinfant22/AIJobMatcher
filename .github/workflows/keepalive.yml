@@ -1,0 +1,16 @@
+name: Keep Alive
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Every 15 minutes
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping app
+        run: |
+          # Replace with your actual app URL when deployed
+          curl -f https://your-app-name.onrender.com/ping/ || echo "App not deployed yet"
+          curl -f https://your-app-name.vercel.app/ping/ || echo "App not deployed yet"

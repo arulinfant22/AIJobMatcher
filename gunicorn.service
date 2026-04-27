@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon for AIJobMatcher
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/path/to/your/AIJobMatcher
+Environment="PATH=/path/to/your/AIJobMatcher/venv/bin"
+EnvironmentFile=/path/to/your/AIJobMatcher/.env
+ExecStart=/path/to/your/AIJobMatcher/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/path/to/your/AIJobMatcher/aijobmatcher.sock \
+    AIJobMatcher.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

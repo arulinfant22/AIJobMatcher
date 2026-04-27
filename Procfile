@@ -1,0 +1,1 @@
+web: gunicorn AIJobMatcher.wsgi:application

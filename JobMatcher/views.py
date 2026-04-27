@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.hashers import make_password, check_password
 from .models import userlogin, Resume, CoverLetter, tb_login
 from django.contrib import messages
 import os
@@ -36,7 +37,8 @@ def register(request):
             return redirect('signup')
 
         # Save the user with hashed password
-        user = userlogin(username=username, email=email, password=password, confirmpassword=confirmpassword)
+        hashed_password = make_password(password)
+        user = userlogin(username=username, email=email, password=hashed_password, confirmpassword=make_password(confirmpassword))
         user.save()
 
         messages.success(request, 'Registered successfully! Please log in.')
@@ -53,11 +55,15 @@ def loginaction(request):
         password = request.POST.get("password")
 
         try:
-            login_user = userlogin.objects.get(email=email, password=password)
-            request.session['user_id'] = login_user.id  # Set session for login
-            request.session['username'] = login_user.username
-            messages.success(request, "Login successful!")
-            return redirect('resume_upload')  # redirect to resume upload page
+            login_user = userlogin.objects.get(email=email)
+            if check_password(password, login_user.password):
+                request.session['user_id'] = login_user.id  # Set session for login
+                request.session['username'] = login_user.username
+                messages.success(request, "Login successful!")
+                return redirect('resume_upload')  # redirect to resume upload page
+            else:
+                messages.error(request, "Invalid email or password")
+                return redirect('login')
         except userlogin.DoesNotExist:
             messages.error(request, "Invalid email or password")
             return redirect('login')
@@ -260,4 +266,6 @@ def dashlogin(request):
             return redirect('adminlogin')  # Redirect back to login page
 
 def logout(request):
-    return render(request,'index.html')
+    request.session.flush()  # Clear all session data
+    messages.success(request, "Logged out successfully!")
+    return redirect('index')
