@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- guide ai icon -->
+    <link rel="icon" type="image/png" href="{% static 'icons/guide ai.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- jQuery and jQuery Validate (CDN for reliability) -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jqueryvalidate.min.js' %}"></script>
+
+    <!-- style for login page -->
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Bootstrap Bundle (JS) -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <title>Login</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <fieldset class="border p-4">
+            
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+            <legend class="fw-bold text-center">Login</legend>
+
+            <form action="{% url 'sign' %}" id="form" method="POST">
+                {% csrf_token %}
+                <h2 class="text-primary text-center">Guide AI</h2>
+
+                <div class="mb-3">
+                    <label>Username:</label>
+                    <input type="text" name="username" class="form-control" placeholder="enter your name">
+                </div>
+                <div class="mb-3">
+                    <label>Email | Mobile:</label>
+                    <input type="email" name="email" class="form-control" placeholder="email or mobile number">
+                </div>
+
+                <div class="mb-3">
+                    <label>Password:</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                </div>
+                <div class="mb-3">
+                    <label>Confirm password:</label>
+                    <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm password">
+                </div>
+
+                <center><button type="submit" class="btn btn-primary">Sign Up</button></center>
+
+                <br><br>
+                <center>Have an account?<a href="{% url 'login' %}" class="fw-bold text-center">Sign In</a>
+                </center>
+
+            </form>
+        </fieldset>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#form").validate({
+                rules: {
+                    gmail: {
+                        required: true,
+                        email: true
+                    },
+                    pass: {
+                        required: true,
+                        minlength: 6
+                    }
+                },
+                messages: {
+                    gmail: {
+                        required: "This field is required",
+                        email: "Enter a valid email address"
+                    },
+                    pass: {
+                        required: "You must enter a password",
+                        minlength: "Password must be at least 6 characters"
+                    }
+                }
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('{% static 'images/bg4.gif' %}') center/cover no-repeat;
+            background-blend-mode: difference;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+        .container {
+            max-width: 400px;
+            background-color: #111;
+            /* Slightly lighter black for contrast */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            /* Subtle white glow */
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: #222;
+            /* Dark input background */
+            color: #fff;
+            /* White text */
+            border: 1px solid #555;
+            /* Light gray border */
+        }
+
+        .form-control:focus {
+            background-color: #222 !important;
+            /* Keep same background color when focused */
+            color: #fff;
+            /* Keep text white */
+            border-color: #0d6efd;
+            /* Bootstrap primary blue */
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+            /* Light gray placeholder text */
+            opacity: 0.7;
+        }
+
+
+        .btn-primary {
+            transition: color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            color: #007bff !important;
+            /* Change color on hover (example: yellow) */
+            text-decoration: underline;
+            /* Optional: add an underline */
+            transition: font-size 0.3s ease-in-out;
+            font-size: 20px;
+        }
+
+        label.error {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
+
+</body>
+
+</html>

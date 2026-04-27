@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIDE AI</title>
+
+    <!-- guide ai icon -->
+    <link rel="icon" type="image/png" href="{% static 'icons/guide ai.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="#">
+    
+    <!-- scroll popup -->
+    <script src="{% static 'js/scrollpop.js' %}"></script>
+    <style>
+        .body{
+    padding-top: 70px;
+}
+.navbar {
+    padding: 12px 0;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-size: 39.41px;
+    color: aliceblue;
+}
+
+.navbar-brand:hover{
+    color: #007bff;
+}
+.nav-link {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #bbc2c9;
+}
+
+.btn1 {
+    font-weight: bold;
+    color: rgb(166, 49, 6);
+    font-size: 1.5rem;
+
+}
+
+.login {
+    font-size: 1.5rem;
+}
+
+.image-container img {
+    width: 130%;
+    max-width: 500px; /* Adjust size */
+}
+
+
+
+.btn1 {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn1:hover {
+    background: #0056b3;
+}
+
+.nav-link:hover{
+    color: #007bff;
+}
+
+a.text-white {
+    transition: color 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+a.text-white:hover {
+    color: #007bff !important; /* Change color on hover (example: yellow) */
+    text-decoration: underline; /* Optional: add an underline */
+    transition: font-size 0.3s ease-in-out;
+    font-size: 20px;
+}
+
+
+.position-relative {
+    position: relative; 
+}
+
+.text-overlay {
+    color: white; 
+    font-size: 19.41px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#header1{
+    left: 30%;
+}
+
+
+#classss{
+    height: 400px;
+    row-gap: 10%;
+}
+
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background: rgba(130, 7, 183, 0.3); /* Semi-transparent background */
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Makes sure the arrows are visible */
+}
+
+
+body {
+    background-color: #f8f9fc;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #1a1a1a;
+}
+
+.feature-card {
+    background-color: white;
+    height: 130%;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 200px;
+    height: 150px;
+    
+}
+
+.position-absolute{
+    margin-top: 20px;
+}</style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-grey shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-" href="index.html">GUIDE AI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon bg-white"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Career Advice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jobs & Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">For Employers</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="{% url 'login' %}" class="text-white text-decoration-none text-overlay">Sign In</a>
+                    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="position-relative">
+        <img src="{% static 'images/bg4.gif' %}" class="w-100 vh-100 object-fit-cover" alt="Background Image">
+
+        <!-- Overlay Content-->
+        <div class="position-absolute top-50 start-0 translate-middle-y text-white text-start ps-5">
+            <h1 class="display-4 fw- text-white">Meet Your AI</h1>
+            <h2>Your Career Copilot</h2>
+            <a href="{% url 'login' %}" class="btn btn-primary mt-3 text-white text-decoration-none">Get Started</a>
+
+        </div>
+    </div> 
+
+    <!-- Partners Section -->
+    <div class="fade-in container-fluid my-5 p-5 bg-white shadow-lg rounded" id="classss">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-start">
+                <h1 class="fw-d">Stop getting ghosted. <br><span class="text-primary fw-bold">Start getting
+                        offers.</span></h1>
+                        <a href="{% url 'login' %}" class="btn btn-primary mt-3 text-white text-decoration-none">Get Started</a>
+            </div>
+            <div class="col-md-6">
+                <!-- <div class="row row-cols-2 row-cols-md-3 g-7 text-center"> -->
+                <div class="row row-cols-2 row-cols-lg-3 g-4 text-center">
+
+                    <div class="col"><img src="{% static 'icons/google1.png' %}" class="img-fluid" alt="Google">Google </div>
+                    <div class="col"><img src="{% static 'icons/amazon1.png' %}" class="img-fluid" alt="Amazon">Amazon</div>
+                    <div class="col"><img src="{% static 'icons/flipkart1.png' %}" class="img-fluid" alt="Flipkart">Flipkart</div>
+                    <div class="col"><img src="{% static 'icons/microsoft1.png' %}" class="img-fluid" alt="Microsoft">Microsoft</div>
+                    <div class="col"><img src="{% static 'icons/apple3.png' %}" class="img-fluid" alt="Apple">Apple</div>
+                    <div class="col"><img src="{% static 'icons/tesla1.png' %}" class="img-fluid" alt="Tesla">Tesla</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br><br>
+    <div class="container my-5 text-center">
+        <h1 class="fw-bold">
+            Land your dream job or internship with your <br>
+            <span class="text-success fw-bold">AI job matchmaker.</span>
+        </h1>
+        <!-- Job Match Carousel -->
+<div id="jobMatchCarousel" class="carousel slide my-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card p-4 shadow border-0 text-center">
+                <img src="{% static 'icons/guide ai.png' %}" class="mx-auto d-block img-fluid" width="80" alt="eBay">
+                <h5 class="mt-3">eBay</h5>
+                <p class="text-success">You're qualified for this role!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card p-4 shadow border-0 text-center">
+                <img src="{% static 'icons/apple3.png' %}" class="mx-auto d-block img-fluid" width="80" alt="Reddit">
+                <h5 class="mt-3">Reddit</h5>
+                <p class="text-success">You're qualified for this role!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card p-4 shadow border-0 text-center">
+                <img src="{% static 'icons/amazon1.png' %}" class="mx-auto d-block img-fluid" width="80" alt="Event">
+                <h5 class="mt-3">Recruiting Event</h5>
+                <p class="text-success">You're qualified for this event!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#jobMatchCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#jobMatchCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<br><br><br><br>
+
+<!-- client impress page -->
+
+<div class="container text-center my-5">
+    <h1 class="fw-bold">
+        Put your <span class="text-primary">AI Job Matchmaker</span> to work today
+    </h1>
+</div>
+<br><br>
+<!-- Job Matchmaking Features -->
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center">
+                    <img src="{% static 'images/profile1.jpg' %}" alt="Profile" class="feature-icon"><br><br>
+                    <h4 class="fw-bold mt-3">Easily create your free profile</h4><br>
+                    <p>Share some details about yourself — your strengths, goals, and past experiences. We'll take care of the rest.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center">
+                    <img src="{% static 'images/joboffer.jpg' %}" alt="Job Matches" class="feature-icon"><br><br>
+                    <h4 class="fw-bold mt-3">Automatically receive job matches</h4><br>
+                    <p>We’ll match you with great-fit roles that are actively hiring, giving you a 20x higher chance of getting an interview.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center">
+                    <img src="{% static 'images/interviews.jpg' %}" alt="Interviews" class="feature-icon"><br><br>
+                    <h4 class="fw-bold mt-3">Start getting interviews for your dream roles</h4><br>
+                    <p>We connect you directly with recruiters and provide interview resources to help you land your dream job.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

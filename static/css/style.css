@@ -1,0 +1,154 @@
+.body{
+    padding-top: 70px;
+}
+.navbar {
+    padding: 12px 0;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-size: 39.41px;
+    color: aliceblue;
+}
+
+.navbar-brand:hover{
+    color: #007bff;
+}
+.nav-link {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #bbc2c9;
+}
+
+.btn1 {
+    font-weight: bold;
+    color: rgb(166, 49, 6);
+    font-size: 1.5rem;
+
+}
+
+.login {
+    font-size: 1.5rem;
+}
+
+.image-container img {
+    width: 130%;
+    max-width: 500px; /* Adjust size */
+}
+
+
+
+.btn1 {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn1:hover {
+    background: #0056b3;
+}
+
+.nav-link:hover{
+    color: #007bff;
+}
+
+a.text-white {
+    transition: color 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+a.text-white:hover {
+    color: #007bff !important; /* Change color on hover (example: yellow) */
+    text-decoration: underline; /* Optional: add an underline */
+    transition: font-size 0.3s ease-in-out;
+    font-size: 20px;
+}
+
+
+.position-relative {
+    position: relative; 
+}
+
+.text-overlay {
+    color: white; 
+    font-size: 39.41px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#header1{
+    left: 30%;
+}
+
+
+#classss{
+    height: 400px;
+    row-gap: 10%;
+}
+
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background: rgba(130, 7, 183, 0.3); /* Semi-transparent background */
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Makes sure the arrows are visible */
+}
+
+
+body {
+    background-color: #f8f9fc;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #1a1a1a;
+}
+
+.feature-card {
+    background-color: white;
+    height: 130%;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 200px;
+    height: 150px;
+    
+}
+
+.position-absolute{
+    margin-top: 20px;
+}

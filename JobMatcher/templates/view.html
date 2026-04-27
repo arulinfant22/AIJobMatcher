@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Resume</title>
+  <link rel="icon" type="image/png" href="{% static 'icons/guide ai.png' %}" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- jQuery -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jqueryvalidate.min.js' %}"></script>
+
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+        url('{% static "images/bg4.gif" %}') center/cover no-repeat;
+      background-blend-mode: overlay;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container-box {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+      height: 100%;
+    }
+
+    h4, h2, h3 {
+      color: #ffc107;
+    }
+
+    .legend-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #0dcaf0;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    blockquote {
+      border-left: 4px solid #0d6efd;
+      padding-left: 15px;
+      margin-top: 20px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .form-control {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 5px rgba(13, 110, 253, 0.4);
+    }
+
+    .btn-outline-warning:hover,
+    .btn-outline-info:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 992px) {
+      .row {
+        flex-direction: column;
+      }
+
+      .container-box {
+        margin-bottom: 30px;
+      }
+    }
+    .navbar {
+      background-color: #0d1117;
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+    }
+
+    .navbar span {
+      font-size: 1.1rem;
+      color: #ffc107;
+    }
+    .logout-btn {
+      font-size: 0.95rem;
+      color: #fff;
+      background-color: #dc3545;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar d-flex justify-content-between align-items-center">
+    <span>👤 Welcome, {{ username }}</span>
+    <form method="POST" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="logout-btn">🚪 Logout</button>
+    </form>
+  </nav>
+  <div class="container-fluid py-0">
+
+    <div class="row justify-content-center gx-5 gy-4">
+
+      <!-- Left Column: Info -->
+      <div class="col-lg-3 me-lg-3 container-box">
+        <h2 class="mb-3 text-white">🚀 Why Upload & Build?</h2>
+        <ul>
+          <li>Instant resume scan & feedback</li>
+          <li>20x higher interview chance</li>
+          <li>AI-powered job matching</li>
+          <li>Connect with verified recruiters</li>
+        </ul>
+
+        <h4 class="mt-4 mb-2">📝 Resume Maker</h4>
+        <ul>
+          <li>Professional templates</li>
+          <li>Step-by-step guidance</li>
+          <li>Keyword optimization</li>
+          <li>Export PDF/DOCX</li>
+        </ul>
+
+        <blockquote>"Opportunities don't happen. You create them." — Chris Grosser</blockquote>
+
+        <p class="mt-4">
+          Ready to build or upload your resume?
+          <a href="#" class="text-warning text-decoration-underline fw-bold">Get Started Now</a>
+        </p>
+      </div>
+
+      <!-- Middle Column: Resume Upload -->
+      <div class="col-lg-4 mx-lg-3 container-box">
+        <fieldset class="border p-4">
+          <legend class="legend-title">📁 Upload Your Resume</legend>
+
+          <form method="POST" action="{% url 'resume_upload' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <input type="file" name="resume" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Upload</button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p>Don't have a resume?</p>
+            <a href="{% url 'resume' %}" class="btn btn-outline-info mb-3 w-100">📝 Create with Resume Maker</a>
+
+            <p>Need a cover letter too?</p>
+            <a href="{% url 'cover' %}" class="btn btn-outline-warning w-100">✉️ Build Your Cover Letter</a>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Right Column: Cover Letter Builder -->
+      <div class="col-lg-3 ms-lg-3 container-box">
+        <h3 class="text-center mb-4 text-warning">✉️ Cover Letter Creator</h3>
+        <p>Want to create a tailored, job-ready cover letter?</p>
+        <ul>
+          <li>Fully customizable editor</li>
+          <li>Auto-formatting and tone tips</li>
+          <li>Export as PDF</li>
+        </ul>
+
+        <blockquote>"Success usually comes to those who are too busy to be looking for it." — Henry David Thoreau</blockquote>
+
+        <p class="mt-4">
+          Need help?
+          <a href="{% url 'cover' %}" class="text-info text-decoration-underline">✉️ Get Cover Letter Assistance</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

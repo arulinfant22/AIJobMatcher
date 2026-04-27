@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/chart.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .dashboard-header {
+            padding: 30px 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-header h1 {
+            color: #0dcaf0;
+        }
+
+        .card {
+            background-color: #1f1f1f;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .card-title {
+            color: #ffc107;
+        }
+
+        .table-dark td, .table-dark th {
+            border-color: #333;
+        }
+
+        canvas {
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .logout-btn {
+            background-color: transparent;
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff4d4d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="dashboard-header">
+        <div>
+            <h1 class="text-info">🛠️ Admin Dashboard</h1>
+            <p class="text-muted">Monitor all users, resumes, and letters in one place</p>
+        </div>
+        <a href="{% url 'logout' %}" class="logout-btn">🚪 Logout</a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <h4 class="card-title">👥 Total Users</h4>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <h4 class="card-title">📄 Resumes Created</h4>
+                <h2>{{ total_resumes }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <h4 class="card-title">✉️ Cover Letters</h4>
+                <h2>{{ total_cover_letters }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart or Stats -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <canvas id="resumeChart" height="150"></canvas>
+        </div>
+    </div>
+
+    <!-- Recent Users Table -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-4">
+                <h4 class="card-title mb-3">🕒 Recent Registrations</h4>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in recent_users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.created_at|date:"Y-m-d H:i" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="3">No recent users found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script>
+  const ctx = document.getElementById('resumeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{ chart_labels|safe }},
+      datasets: [
+        {
+          label: 'Resumes Created',
+          data: {{ resume_data|safe }},
+          borderColor: 'rgba(0, 188, 212, 1)',
+          backgroundColor: 'rgba(0, 188, 212, 0.2)',
+          fill: true,
+          tension: 0.3
+        },
+        {
+          label: 'User Registrations',
+          data: {{ user_data|safe }},
+          borderColor: 'rgba(255, 193, 7, 1)',
+          backgroundColor: 'rgba(255, 193, 7, 0.2)',
+          fill: true,
+          tension: 0.3
+        },
+        {
+          label: 'Cover Letters Created',
+          data: {{ coverletter_data|safe }},
+          borderColor: 'rgba(144, 238, 144, 1)',  // light green
+          backgroundColor: 'rgba(144, 238, 144, 0.2)',
+          fill: true,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#ccc"
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: "#ccc" }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: "#ccc" }
+        }
+      }
+    }
+  });
+</script>
+
+
+
+</body>
+</html>  

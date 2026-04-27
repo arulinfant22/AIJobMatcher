@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Builder - Dark Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+        url('{% static "images/bg4.gif" %}') center/cover no-repeat fixed;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #1f1f1f;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+        }
+
+        h1, h2 {
+            color: #00bcd4;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #2a2a2a;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 6px;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #00bcd4;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00b894;
+            padding: 12px 25px;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #019875;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .flex-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flex-group input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        @media (max-width: 600px) {
+            .flex-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Resume Builder</h1>
+
+    <form action="{% url 'resumemaker' %}" method="post">
+        {% csrf_token %}
+
+        <div class="form-section">
+            <h2>Personal Information</h2>
+            <input type="text" name="user" placeholder="Full Name">
+            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="phone" placeholder="Phone">
+            <input type="text" name="linkedin" placeholder="LinkedIn URL">
+            <input type="text" name="github" placeholder="GitHub URL">
+            <textarea name="details" placeholder="Professional Summary" rows="4"></textarea>
+        </div>
+
+        <div class="form-section">
+            <h2>Technical Skills</h2>
+            <input type="text" name="languages" placeholder="Languages (e.g., Python, JavaScript)">
+            <input type="text" name="frameworks" placeholder="Frameworks (e.g., Django, Bootstrap)">
+            <input type="text" name="tools" placeholder="Tools (e.g., Git, VS Code)">
+            <input type="text" name="database" placeholder="Databases (e.g., MySQL)">
+        </div>
+
+        <div class="form-section">
+            <h2>Projects</h2>
+            <div>
+                <input type="text" name="project1_title" placeholder="Project 1 Title">
+                <input type="text" name="project1_duration" placeholder="Duration">
+                <textarea name="project1_point1" placeholder="Project 1 Description" rows="3"></textarea>
+            </div>
+            <div>
+                <input type="text" name="project2_title" placeholder="Project 2 Title">
+                <input type="text" name="project2_duration" placeholder="Duration">
+                <textarea name="project2_point2" placeholder="Project 2 Description" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Experience</h2>
+            <input type="text" name="company1" placeholder="Company Name">
+            <input type="text" name="position1" placeholder="Position">
+            <input type="text" name="duration1" placeholder="Duration">
+            <textarea name="experience1_point1" placeholder="Experience Description" rows="3"></textarea>
+        </div>
+
+        <div class="form-section">
+            <h2>Education</h2>
+            <div class="flex-group">
+                <input type="text" name="edu1_degree" placeholder="Degree">
+                <input type="text" name="edu1_college" placeholder="College Name">
+                <input type="text" name="edu1_year" placeholder="Year/Duration">
+            </div>
+            <div class="flex-group">
+                <input type="text" name="edu2_degree" placeholder="Degree">
+                <input type="text" name="edu2_college" placeholder="College Name">
+                <input type="text" name="edu2_year" placeholder="Year/Duration">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Certifications</h2>
+            <input type="text" name="cert1" placeholder="Certification 1">
+            <input type="text" name="cert2" placeholder="Certification 2">
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

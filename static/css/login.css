@@ -1,0 +1,86 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../images/bg4.gif') center/cover no-repeat;
+    background-blend-mode: difference;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+.container {
+    max-width: 400px;
+    background-color: #111;
+    /* Slightly lighter black for contrast */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    /* Subtle white glow */
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: #222;
+    /* Dark input background */
+    color: #fff;
+    /* White text */
+    border: 1px solid #555;
+    /* Light gray border */
+}
+
+.form-control:focus {
+    background-color: #222 !important;
+    /* Keep same background color when focused */
+    color: #fff;
+    /* Keep text white */
+    border-color: #0d6efd;
+    /* Bootstrap primary blue */
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.form-control::placeholder {
+    color: #aaa;
+    /* Light gray placeholder text */
+    opacity: 0.7;
+}
+
+
+.btn-primary {
+    transition: color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    color: #007bff !important;
+    /* Change color on hover (example: yellow) */
+    text-decoration: underline;
+    /* Optional: add an underline */
+    transition: font-size 0.3s ease-in-out;
+    font-size: 20px;
+}
+
+label.error {
+    color: red;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+

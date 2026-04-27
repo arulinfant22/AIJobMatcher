@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ name }} | Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      padding: 30px 15px;
+    }
+
+    .resume-container {
+      background-color: #1e1e1e;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.06);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      color: #00ffd5;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    h2 {
+      color: #00bcd4;
+      font-size: 20px;
+      margin: 30px 0 10px;
+      border-left: 4px solid #00bcd4;
+      padding-left: 10px;
+    }
+
+    .section ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+
+    .section ul li {
+      margin-bottom: 5px;
+    }
+
+    .section p {
+      margin: 4px 0;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .project {
+      margin-bottom: 15px;
+    }
+
+    .project h3 {
+      color: #f3f3f3;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .experience h3 {
+      color: #f3f3f3;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .btn-download {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #00b894;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #019875;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .resume-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resume-container" id="resume">
+    <div class="header">
+      <h1>{{ name }}</h1>
+      <p>{{ phone }} | {{ email }}</p>
+      <p><a href="{{ linkedin }}" style="color:#00bcd4;">{{ linkedin }}</a> | <a href="{{ github }}" style="color:#00bcd4;">{{ github }}</a></p>
+    </div>
+
+    <div class="section">
+      <h2>SUMMARY</h2>
+      <p>{{ summary }}</p>
+    </div>
+
+    <div class="section">
+      <h2>TECHNICAL SKILLS</h2>
+      <p><strong>Languages:</strong> {{ languages }}</p>
+      <p><strong>Frameworks:</strong> {{ frameworks }}</p>
+      <p><strong>Libraries & Tools:</strong> {{ tools }}</p>
+      <p><strong>Database:</strong> {{ database }}</p>
+    </div>
+
+    <div class="section">
+      <h2>PROJECTS</h2>
+
+      <div class="project">
+        <h3>{{ project1_title }} <span style="float:right;">{{ project1_duration }}</span></h3>
+        <p><em>{{ project1_stack }}</em></p>
+        <ul>
+          <li>{{ project1_point1 }}</li>
+          <li>{{ project1_point2 }}</li>
+          <li>{{ project1_point3 }}</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>{{ project2_title }} <span style="float:right;">{{ project2_duration }}</span></h3>
+        <p><em>{{ project2_stack }}</em></p>
+        <ul>
+          <li>{{ project2_point1 }}</li>
+          <li>{{ project2_point2 }}</li>
+          <li>{{ project2_point3 }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section experience">
+      <h2>EXPERIENCE</h2>
+      <h3>{{ exp_company }} <span style="float:right;">{{ exp_duration }}</span></h3>
+      <p><em>{{ exp_location }}</em></p>
+      <ul>
+        <li>{{ exp_point1 }}</li>
+        <li>{{ exp_point2 }}</li>
+        <li>{{ exp_point3 }}</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>EDUCATION</h2>
+      <p><strong>{{ edu1_institute }}</strong> — {{ edu1_degree }} ({{ edu1_duration }})</p>
+      <p><strong>{{ edu2_institute }}</strong> — {{ edu2_degree }} ({{ edu2_duration }})</p>
+    </div>
+
+    <div class="section">
+      <h2>CERTIFICATIONS</h2>
+      <ul>
+        <li>{{ cert1 }}</li>
+        <li>{{ cert2 }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <button onclick="generatePDF('resume')" class="btn-download">Download PDF</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script>
+    function generatePDF(containerId) {
+      const element = document.getElementById(containerId);
+      html2pdf().from(element).set({
+        margin: 10,
+        filename: 'resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).save();
+    }
+  </script>
+</body>
+</html>

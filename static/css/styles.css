@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+input, button {
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Job List */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #eef;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cover Letter Builder - Dark Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88)), 
+        url('{% static "images/bg4.gif" %}') center/cover no-repeat fixed;
+      color: #fff;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-container {
+      max-width: 900px;
+      margin: auto;
+      background-color: #1f1f1f;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+    }
+
+    h1 {
+      color: #00bcd4;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-section {
+      margin-bottom: 40px;
+    }
+
+    .form-section h2 {
+      color: #ffc107;
+      font-size: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #00bcd4;
+      padding-left: 12px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      display: block;
+      color: #ccc;
+    }
+
+    input, textarea {
+      background: #2a2a2a;
+      color: #fff;
+      border: 1px solid #444;
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00bcd4;
+      box-shadow: 0 0 6px rgba(0, 188, 212, 0.4);
+      outline: none;
+    }
+
+    .btn-submit {
+      background-color: #00b894;
+      color: white;
+      font-weight: bold;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #01a383;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>✉️ Cover Letter Builder</h1>
+
+    <form method="POST" action="{% url 'coverletter' %}">
+      {% csrf_token %}
+
+      <!-- Section 1: Personal Info -->
+      <div class="form-section">
+        <h2>👤 Personal Information</h2>
+        <label>Your Full Name</label>
+        <input type="text" name="user" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="phone" required>
+      </div>
+
+      <!-- Section 2: Job Details -->
+      <div class="form-section">
+        <h2>🏢 Job Details</h2>
+        <label>Company Name</label>
+        <input type="text" name="company" required>
+
+        <label>Position You're Applying For</label>
+        <input type="text" name="position" required>
+      </div>
+
+      <!-- Section 3: Cover Letter Content -->
+      <div class="form-section">
+        <h2>📝 Cover Letter Content</h2>
+
+        <label>Introduction Paragraph</label>
+        <textarea name="intro" rows="3" required placeholder="e.g., I'm writing to express my interest in..."></textarea>
+
+        <label>Main Body</label>
+        <textarea name="details" rows="5" required placeholder="Talk about your experience, achievements, and alignment with the role."></textarea>
+
+        <label>Closing Statement</label>
+        <textarea name="closing" rows="3" required placeholder="e.g., Thank you for considering my application..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">✨ Generate Cover Letter</button>
+    </form>
+  </div>
+</body>
+</html>

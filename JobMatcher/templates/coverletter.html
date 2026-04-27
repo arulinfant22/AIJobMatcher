@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cover Letter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      padding: 40px 20px;
+    }
+
+    .cover-container {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    }
+
+    h1, h2 {
+      color: #00ffc8;
+    }
+
+    p {
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: #ccc;
+    }
+
+    .contact-info {
+      font-size: 15px;
+      margin-bottom: 30px;
+      color: #aaa;
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-weight: bold;
+    }
+
+    .btn-download {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 24px;
+      background-color: #00b894;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #019875;
+    }
+
+    @media (max-width: 600px) {
+      .cover-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cover-letter" class="cover-container">
+    <div class="contact-info">
+      {{ full_name }}<br>
+      {{ email }} | {{ phone }}
+    </div>
+
+    <p>Dear Hiring Manager at <strong>{{ company }}</strong>,</p>
+
+    <p>{{ intro }}</p>
+    <p>{{ body }}</p>
+    <p>{{ closing }}</p>
+
+    <div class="signature">
+      Sincerely,<br>
+      {{ full_name }}
+    </div>
+  </div>
+
+  <button class="btn-download" onclick="generatePDF()">⬇️ Download Cover Letter</button>
+
+  <script>
+    function generatePDF() {
+      const element = document.getElementById('cover-letter');
+      html2pdf().from(element).set({
+        margin: 10,
+        filename: 'cover_letter.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).save();
+    }
+  </script>
+
+</body>
+</html>
