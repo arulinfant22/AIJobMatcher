@@ -128,6 +128,89 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .dashboard-header {
+                padding: 20px 15px;
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .dashboard-header p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .logout-btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+            
+            /* Summary Cards */
+            .row.text-center.mb-5 {
+                margin-bottom: 2rem;
+            }
+            
+            .col-md-4.mb-3 {
+                margin-bottom: 1rem;
+            }
+            
+            .card.p-4 {
+                padding: 1.5rem 1rem !important;
+                margin-bottom: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card h2 {
+                font-size: 2rem;
+                margin: 0;
+            }
+            
+            /* Chart */
+            .row.mb-5 {
+                margin-bottom: 2rem;
+            }
+            
+            canvas {
+                padding: 10px !important;
+                border-radius: 8px !important;
+                height: 200px !important;
+            }
+            
+            /* Recent Users Table */
+            .card.p-4 {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .table-dark {
+                font-size: 0.85rem;
+            }
+            
+            .table-dark th,
+            .table-dark td {
+                padding: 0.5rem;
+                vertical-align: middle;
+            }
+            
+            /* Hide some columns on very small screens */
+            .table-dark th:nth-child(2),
+            .table-dark td:nth-child(2) {
+                display: none;
+            }
+            
+            /* Footer */
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -141,6 +224,153 @@
             .footer-stats {
                 flex-direction: column;
                 gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dashboard-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .dashboard-header p {
+                font-size: 0.8rem;
+            }
+            
+            .card.p-4 {
+                padding: 1rem 0.75rem !important;
+            }
+            
+            .card-title {
+                font-size: 0.9rem;
+            }
+            
+            .card h2 {
+                font-size: 1.5rem;
+            }
+            
+            canvas {
+                height: 150px !important;
+                padding: 5px !important;
+            }
+            
+            .table-dark {
+                font-size: 0.8rem;
+            }
+            
+            .table-dark th,
+            .table-dark td {
+                padding: 0.25rem;
+                font-size: 0.75rem;
+            }
+            
+            /* Hide email column on mobile */
+            .table-dark th:nth-child(2),
+            .table-dark td:nth-child(2) {
+                display: none;
+            }
+            
+            .footer-brand {
+                font-size: 1rem;
+            }
+            
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+            
+            .footer-stat {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .dashboard-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .dashboard-header p {
+                font-size: 0.75rem;
+            }
+            
+            .card.p-4 {
+                padding: 0.75rem 0.5rem !important;
+                margin-bottom: 0.75rem;
+            }
+            
+            .card-title {
+                font-size: 0.8rem;
+            }
+            
+            .card h2 {
+                font-size: 1.2rem;
+            }
+            
+            canvas {
+                height: 120px !important;
+            }
+            
+            .table-dark {
+                font-size: 0.7rem;
+            }
+            
+            .table-dark th,
+            .table-dark td {
+                padding: 0.2rem;
+                font-size: 0.7rem;
+            }
+            
+            /* Only show username and joined date */
+            .table-dark th:nth-child(2),
+            .table-dark td:nth-child(2) {
+                display: none;
+            }
+            
+            .logout-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Touch-friendly adjustments */
+        @media (hover: none) and (pointer: coarse) {
+            .logout-btn {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .card {
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+            
+            .card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Landscape mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .dashboard-header {
+                padding: 15px 10px;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 1.4rem;
+                margin-bottom: 5px;
+            }
+            
+            .row.text-center.mb-5 {
+                margin-bottom: 1rem;
+            }
+            
+            .row.mb-5 {
+                margin-bottom: 1rem;
+            }
+            
+            canvas {
+                height: 180px !important;
             }
         }
     </style>

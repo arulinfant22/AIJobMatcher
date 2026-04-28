@@ -184,6 +184,191 @@
             color: #0056b3;
             text-decoration: underline;
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .container {
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+            
+            fieldset {
+                border: none !important;
+                padding: 0 !important;
+            }
+            
+            legend {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            h2.text-primary {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .form-control {
+                padding: 12px 15px;
+                font-size: 16px;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+            }
+            
+            label {
+                font-size: 14px;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+            
+            .btn-primary {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 8px;
+                margin-top: 1rem;
+            }
+            
+            .btn-primary:hover {
+                font-size: 16px;
+                text-decoration: none;
+            }
+            
+            .alert {
+                margin-bottom: 1rem;
+                padding: 10px 15px;
+                font-size: 14px;
+                border-radius: 8px;
+            }
+            
+            center {
+                margin-top: 1.5rem;
+            }
+            
+            center a {
+                font-size: 14px;
+            }
+            
+            label.error {
+                font-size: 12px;
+                margin-top: 0.25rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .container {
+                padding: 15px 10px;
+                margin: 10px 5px;
+            }
+            
+            h2.text-primary {
+                font-size: 1.5rem;
+            }
+            
+            legend {
+                font-size: 1.3rem;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+            
+            .btn-primary {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .alert {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 10px 8px;
+                margin: 5px 2px;
+            }
+            
+            h2.text-primary {
+                font-size: 1.3rem;
+            }
+            
+            legend {
+                font-size: 1.2rem;
+            }
+            
+            .form-control {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+            
+            .btn-primary {
+                padding: 8px;
+                font-size: 14px;
+            }
+            
+            label {
+                font-size: 13px;
+            }
+            
+            .alert {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            center a {
+                font-size: 12px;
+            }
+        }
+
+        /* Touch-friendly adjustments */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-primary {
+                min-height: 48px;
+                font-size: 16px;
+            }
+            
+            .form-control {
+                min-height: 44px;
+                font-size: 16px;
+            }
+        }
+
+        /* Landscape mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 10px auto;
+                max-width: 500px;
+            }
+            
+            h2.text-primary {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-primary {
+                margin-top: 0.5rem;
+            }
+        }
     </style>
 
 </body>

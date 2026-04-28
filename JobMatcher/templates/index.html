@@ -173,6 +173,205 @@ h1 {
 
 .position-absolute{
     margin-top: 20px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 28px !important;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem !important;
+        padding: 0.5rem 0.5rem !important;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .d-flex.align-items-center.gap-3 {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .hero-section img {
+        height: 60vh !important;
+        object-position: center;
+    }
+    
+    .position-absolute.top-50.start-0 {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        text-align: center !important;
+        padding: 0 20px !important;
+        width: 100% !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem !important;
+    }
+    
+    .btn-primary {
+        font-size: 1rem !important;
+        padding: 8px 16px !important;
+    }
+    
+    #classss {
+        padding: 2rem 1rem !important;
+        margin: 2rem 0 !important;
+    }
+    
+    #classss .row {
+        flex-direction: column;
+    }
+    
+    #classss .col-md-6 {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    #classss .row-cols-2 .col {
+        margin-bottom: 1rem;
+    }
+    
+    #classss img {
+        max-width: 80px;
+        height: auto;
+    }
+    
+    .feature-card {
+        margin-bottom: 1.5rem;
+        height: auto !important;
+    }
+    
+    .feature-icon {
+        width: 120px !important;
+        height: 90px !important;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 24px !important;
+    }
+    
+    .nav-link {
+        font-size: 1rem !important;
+    }
+    
+    .display-4 {
+        font-size: 1.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .btn-primary {
+        font-size: 0.9rem !important;
+        padding: 6px 12px !important;
+    }
+    
+    #classss {
+        padding: 1.5rem 0.5rem !important;
+    }
+    
+    #classss img {
+        max-width: 60px;
+    }
+    
+    .feature-icon {
+        width: 100px !important;
+        height: 75px !important;
+    }
+    
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .fade-in.container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 400px) {
+    .navbar-brand {
+        font-size: 20px !important;
+    }
+    
+    .display-4 {
+        font-size: 1.2rem !important;
+    }
+    
+    .position-absolute.top-50.start-0 h1,
+    .position-absolute.top-50.start-0 h2 {
+        font-size: 1rem !important;
+    }
+    
+    #classss img {
+        max-width: 50px;
+    }
+    
+    .feature-icon {
+        width: 80px !important;
+        height: 60px !important;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section img {
+        height: 80vh !important;
+    }
+    
+    .position-absolute.top-50.start-0 {
+        top: 40% !important;
+    }
+    
+    #classss {
+        padding: 1rem 0.5rem !important;
+    }
 }</style>
 </head>
 <body>
@@ -198,7 +397,7 @@ h1 {
     </nav>
 
     <!-- Hero Section -->
-    <div class="position-relative">
+    <div class="position-relative hero-section">
         <img src="{% static 'images/bg4.gif' %}" class="w-100 vh-100 object-fit-cover" alt="Background Image">
 
         <!-- Overlay Content-->
