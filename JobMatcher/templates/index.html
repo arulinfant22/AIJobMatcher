@@ -320,5 +320,42 @@ h1 {
         </div>
     </div>
 </div>
+
+<!-- JavaScript for fade-in animation -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in animation to Partners Section
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function showElement(element) {
+        element.classList.add('show');
+    }
+    
+    // Show Partners Section immediately when page loads
+    fadeElements.forEach(element => {
+        showElement(element);
+    });
+    
+    // Optional: Show elements when they come into view
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                showElement(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    fadeElements.forEach(element => {
+        observer.observe(element);
+    });
+});
+</script>
+
 </body>
 </html>
