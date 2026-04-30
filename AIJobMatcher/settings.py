@@ -82,9 +82,14 @@ import dj_database_url
 import os
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='mysql://root:12345@127.0.0.1:3306/AIJob'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'aijob'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'db'),  # 👈 VERY IMPORTANT
+        'PORT': '5432',
+    }
 }
 
 
@@ -134,10 +139,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 from decouple import config
-GOOGLE_API_KEY = config("GOOGLE_API_KEY")
-GOOGLE_CSE_ID = config("GOOGLE_CSE_ID")
+GOOGLE_API_KEY = config("GOOGLE_API_KEY", default="")
+GOOGLE_CSE_ID = config("GOOGLE_CSE_ID", default="")
 
 
 
-RAPIDAPI_KEY = config("RAPIDAPI_KEY")
-RAPIDAPI_HOST = config("RAPIDAPI_HOST")
+RAPIDAPI_KEY = config("RAPIDAPI_KEY", default="")
+RAPIDAPI_HOST = config("RAPIDAPI_HOST", default="")
